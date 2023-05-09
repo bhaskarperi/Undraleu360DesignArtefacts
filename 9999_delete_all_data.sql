@@ -1,0 +1,27 @@
+DELETE FROM cbp_cons_rule_trans_sql_prop;
+DELETE FROM cbp_selection;
+DELETE FROM cbp_batch_group_run_detail;
+DELETE FROM cbp_batch_group;
+DELETE FROM cbp_act_tag;
+DELETE FROM cbp_object_signal_audit;
+DELETE FROM cbp_rev_history_det;
+DELETE FROM cbp_rev_history_sum;
+DELETE FROM cbp_code_object;
+DELETE FROM cbp_project_parameter;
+DELETE FROM cbp_metrics_report_detail;
+DELETE FROM cbp_metrics_report;
+DELETE FROM cbp_rule_q_mapper;
+DELETE FROM cbp_rule_list;
+DELETE FROM cbp_user_rule_list;
+DELETE FROM cbp_waiver;
+DELETE FROM cbp_rule_category;
+DELETE FROM cbp_rule_criticality;
+DELETE FROM cbp_rule_parameter;
+DELETE FROM cbp_rule_q_mapper;
+DELETE FROM cbp_signal;
+DELETE FROM cbp_rule_xpath_map;
+DELETE FROM cbp_rule;
+DELETE FROM cbp_parameter;
+DELETE FROM cbp_ta_xpath;
+
+COMMIT;	
