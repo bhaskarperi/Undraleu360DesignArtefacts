@@ -10,6 +10,7 @@ DATE		WHO			DESCRIPTION
 16DEC2022	BP			Pulled from the Legacy scripts.
 27MAR2023	PY			Added cbp_trans_etarget_mapper, cbp_etarget_field and cbp_etarget tables
 09MAY2023	BP			Added cbp_tag.connection_list_json
+06JUN2023	BP			Changed all datatypes of NUMBER to INTEGER
 			
 ********************************************************************************************************/
 DROP TABLE cbp_rep_int_svc_mapper;
@@ -102,7 +103,7 @@ ALTER TABLE cbp_agile_op
 CREATE TABLE cbp_clone_mapping
 (
 	cbp_clone_mapping_id  INTEGER  NOT NULL ,
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_project_id  INTEGER  NULL ,
 	cbp_folder_id  INTEGER  NULL ,
@@ -294,7 +295,7 @@ ALTER TABLE cbp_site_property
 
 CREATE TABLE cbp_source
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_source_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_source_name  VARCHAR2(30)  NOT NULL ,
@@ -307,7 +308,7 @@ ALTER TABLE cbp_source
 
 CREATE TABLE cbp_source_field
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_source_id  INTEGER  NOT NULL ,
 	cbp_field_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
@@ -322,7 +323,7 @@ ALTER TABLE cbp_source_field
 
 CREATE TABLE cbp_tag
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_tag_name  VARCHAR2(100)  NOT NULL ,
 	cbp_tag_comment  VARCHAR2(500)  NULL ,
@@ -341,7 +342,7 @@ ALTER TABLE cbp_tag
 
 CREATE TABLE cbp_target
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_target_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_target_name  VARCHAR2(30)  NOT NULL ,
@@ -354,7 +355,7 @@ ALTER TABLE cbp_target
 
 CREATE TABLE cbp_target_field
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_target_id  INTEGER  NOT NULL ,
 	cbp_field_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
@@ -418,7 +419,7 @@ ALTER TABLE cbp_trans_output_level
 
 CREATE TABLE cbp_trans_source_mapper
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_transformation_port_id  INTEGER  NOT NULL ,
 	cbp_transformation_id  INTEGER  NOT NULL ,
@@ -460,7 +461,7 @@ ALTER TABLE cbp_trans_supp_op
 
 CREATE TABLE cbp_trans_target_mapper
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_transformation_id  INTEGER  NOT NULL ,
 	cbp_transformation_port_id  INTEGER  NOT NULL ,
@@ -483,7 +484,7 @@ ALTER TABLE cbp_trans_type
 
 CREATE TABLE cbp_transformation
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_transformation_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_transformation_name  VARCHAR2(240)  NOT NULL ,
@@ -497,7 +498,7 @@ ALTER TABLE cbp_transformation
 CREATE TABLE cbp_transformation_port
 (
 	cbp_transformation_port_id  INTEGER  NOT NULL ,
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_transformation_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_port_name  VARCHAR2(250)  NOT NULL ,
@@ -520,7 +521,7 @@ CREATE TABLE cbp_ut_metrics
 	cbp_folder_id  INTEGER  NOT NULL ,
 	cbp_mapping_id  INTEGER  NOT NULL ,
 	cbp_transformation_name  VARCHAR2(255)  NOT NULL ,
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_created_dt  DATE  NOT NULL ,
 	cbp_no_of_variable_ports  INTEGER  NULL ,
@@ -536,7 +537,7 @@ ALTER TABLE cbp_ut_metrics
 
 CREATE TABLE cbp_etarget
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_etarget_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_etarget_name  VARCHAR2(30)  NOT NULL ,
@@ -549,7 +550,7 @@ ALTER TABLE cbp_etarget
 
 CREATE TABLE cbp_etarget_field
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_etarget_id  INTEGER  NOT NULL ,
 	cbp_field_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
@@ -564,7 +565,7 @@ ALTER TABLE cbp_etarget_field
 
 CREATE TABLE cbp_trans_etarget_mapper
 (
-	cbp_tag_id  NUMBER  NOT NULL ,
+	cbp_tag_id  INTEGER  NOT NULL ,
 	cbp_agile_mode_id  INTEGER  NOT NULL ,
 	cbp_transformation_id  INTEGER  NOT NULL ,
 	cbp_transformation_port_id  INTEGER  NOT NULL ,
