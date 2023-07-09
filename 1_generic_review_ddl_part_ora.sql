@@ -67,6 +67,9 @@ DATE		WHO			DESCRIPTION
 						Have a doubt on estimated_volume column that may need a NUMBER
 						Added constraint names R2183, R2184, and R2185
 						Removed BYTE clause from VARCHAR2 datatypes
+27JUN2023	BP			Added cbp_user_security.pwd_needs_reset  VARCHAR2(1)  NULL
+						Added table cbp_user_access_aud for enabling user activity auditing
+30JUN2023	BP			Added cbp_batch_group.selected_json	to store selection information for a batch
 ********************************************************************************************************/
 
 DROP TABLE cbp_odi_folder_type;
@@ -158,6 +161,7 @@ DROP TABLE cbp_team_user;
 DROP TABLE cbp_user_project;
 DROP TABLE cbp_user_report_share;
 DROP TABLE cbp_user_rule_list;
+DROP TABLE cbp_user_access_aud;
 DROP TABLE cbp_user_security;
 DROP TABLE cbp_user_selection_choice;
 DROP TABLE cbp_waiver;
@@ -268,7 +272,8 @@ CREATE TABLE cbp_batch_group
 	updated_timestamp  DATE  NOT NULL ,
 	comments  VARCHAR2(200)  NULL ,
 	is_manual  VARCHAR2(1)  NULL ,
-	notif_group_id  INTEGER  NULL 
+	notif_group_id  INTEGER  NULL,
+	selected_json CLOB NULL
 );
 CREATE TABLE cbp_batch_group_run_detail
 (
@@ -1131,7 +1136,15 @@ CREATE TABLE cbp_user_security
 	cbp_is_deployment_approver  VARCHAR2(1)  NULL ,
 	is_deleted  VARCHAR2(1)  NULL ,
 	is_locked  VARCHAR2(1)  NULL ,
-	is_global_dashboard_enabled  VARCHAR2(1)  NULL 
+	is_global_dashboard_enabled  VARCHAR2(1)  NULL,
+	pwd_needs_reset	VARCHAR2(1)  NULL
+);
+CREATE TABLE cbp_user_access_aud
+(
+    cbp_user_id  INTEGER  NOT NULL ,
+    logon_ts  DATE  NOT NULL ,
+    logoff_ts  DATE  NULL ,
+    session_id  VARCHAR2(256)  NULL 
 );
 CREATE TABLE cbp_user_selection_choice
 (
@@ -1956,6 +1969,8 @@ ALTER TABLE cbp_user_rule_list
 	ADD CONSTRAINT  XPKcbp_user_rule_list PRIMARY KEY (cbp_user_id,cbp_rule_list_id,cbp_rule_id);
 ALTER TABLE cbp_user_security
 	ADD CONSTRAINT  XPKcbp_user_security PRIMARY KEY (cbp_user_id);
+ALTER TABLE cbp_user_access_aud
+    ADD CONSTRAINT  XPKcbp_user_access_aud PRIMARY KEY (cbp_user_id,logon_ts);
 ALTER TABLE cbp_user_selection_choice
 	ADD CONSTRAINT  XPKcbp_user_selection_choice PRIMARY KEY (selection_id);
 ALTER TABLE cbp_waiver
