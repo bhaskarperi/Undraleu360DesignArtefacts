@@ -70,6 +70,8 @@ DATE		WHO			DESCRIPTION
 27JUN2023	BP			Added cbp_user_security.pwd_needs_reset  VARCHAR2(1)  NULL
 						Added table cbp_user_access_aud for enabling user activity auditing
 30JUN2023	BP			Added cbp_batch_group.selected_json	to store selection information for a batch
+10JUL2023	BP			table_estimated_volume changed to INTEGER from INTEGER(38)
+10JUL2023	BP			Removed Foreign Key to cbp_folder for tables CBP_CODE_OBJECT and CBP_METRICS_REPORT_DETAIL
 ********************************************************************************************************/
 
 DROP TABLE cbp_odi_folder_type;
@@ -1069,7 +1071,7 @@ CREATE TABLE cbp_table_rule_supp
 (
 	table_name  VARCHAR2(255)  NOT NULL ,
 	table_prop_type  VARCHAR2(20)  NOT NULL ,
-	table_estimated_volume  INTEGER(38)  NULL 
+	table_estimated_volume  INTEGER NULL 
 );
 CREATE TABLE cbp_team
 (
@@ -2130,8 +2132,8 @@ ALTER TABLE cbp_code_object
 	ADD (CONSTRAINT  R343 FOREIGN KEY (cbp_project_id) REFERENCES cbp_project(cbp_project_id));
 ALTER TABLE cbp_code_object
 	ADD (CONSTRAINT  R345 FOREIGN KEY (prx_object_type_id) REFERENCES cbp_prx_object_type(prx_object_type_id));
-ALTER TABLE cbp_code_object
-	ADD (CONSTRAINT  R678 FOREIGN KEY (cbp_repository_id,cbp_ds_project_id,cbp_folder_id,cbp_folder_id_v) REFERENCES cbp_folder(cbp_repository_id,cbp_ds_project_id,cbp_folder_id,cbp_folder_id_v));
+--ALTER TABLE cbp_code_object
+--	ADD (CONSTRAINT  R678 FOREIGN KEY (cbp_repository_id,cbp_ds_project_id,cbp_folder_id,cbp_folder_id_v) REFERENCES cbp_folder(cbp_repository_id,cbp_ds_project_id,cbp_folder_id,cbp_folder_id_v));
 ALTER TABLE cbp_db_connection
 	ADD (CONSTRAINT  R227 FOREIGN KEY (cbp_env_type_id) REFERENCES cbp_env_type(cbp_env_type_id));
 ALTER TABLE cbp_db_connection
@@ -2168,8 +2170,8 @@ ALTER TABLE cbp_metrics_report_detail
 	ADD (CONSTRAINT  R106 FOREIGN KEY (cbp_rule_id) REFERENCES cbp_rule(cbp_rule_id));
 ALTER TABLE cbp_metrics_report_detail
 	ADD (CONSTRAINT  R112 FOREIGN KEY (cbp_metrics_report_id) REFERENCES cbp_metrics_report(cbp_metrics_report_id));
-ALTER TABLE cbp_metrics_report_detail
-	ADD (CONSTRAINT  R105 FOREIGN KEY (cbp_repository_id,cbp_ds_project_id,cbp_folder_id,cbp_folder_id_v) REFERENCES cbp_folder(cbp_repository_id,cbp_ds_project_id,cbp_folder_id,cbp_folder_id_v));
+--ALTER TABLE cbp_metrics_report_detail
+--	ADD (CONSTRAINT  R105 FOREIGN KEY (cbp_repository_id,cbp_ds_project_id,cbp_folder_id,cbp_folder_id_v) REFERENCES cbp_folder(cbp_repository_id,cbp_ds_project_id,cbp_folder_id,cbp_folder_id_v));
 ALTER TABLE cbp_misc_project_property
 	ADD (CONSTRAINT  R160 FOREIGN KEY (cbp_project_id) REFERENCES cbp_project(cbp_project_id));
 ALTER TABLE cbp_misc_project_property
